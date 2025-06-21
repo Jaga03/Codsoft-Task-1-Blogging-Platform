@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blogging Platform</title>
+  <link rel="shortcut icon" href="image/v.png" type="image/x-icon">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <nav>
+    <h1>VoxPost</h1>
+    <div id="auth">
+      <button id="loginBtn">Login</button>
+      <button id="registerBtn">Register</button>
+    </div>
+    <div id="userProfile" style="display: none;">
+      <button id="profileBtn" class="profile-button"></button>
+      <button id="logoutBtn">Logout</button>
+    </div>
+  </nav>
+ 
+  <main>
+  <section id="postFormSection" style="display: none;">
+  <h2>Create Post</h2>
+  <form id="postForm" enctype="multipart/form-data">
+    <input type="hidden" id="postId" name="id" />
+    <input type="text" id="title" name="title" placeholder="Title" required />
+    <textarea id="content" name="content" placeholder="Content" required></textarea>
+    <input type="file" id="image" name="image" />
+    <button type="submit">Save Post</button>
+  </form>
+</section>
+<div class="search-container">
+  <input type="text" id="searchInput" placeholder="Search posts..." name="searchInput" />
+  <div class="search-buttons">
+    <button onclick="searchPosts()">Search</button>
+    <button onclick="document.getElementById('searchInput').value=''; loadPosts();">Clear</button>
+  </div>
+</div>
+
+<section class="posts-section">
+  <h2 class="post-heading">All Posts</h2>
+  <div id="posts" class="posts-grid"></div>
+  <div id="pagination" class="pagination"></div>
+</section>
+
+
+  </main>
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <input type="text" id="loginEmail" placeholder="Email" required />
+        <div class="password-container">
+  <input type="password" id="loginPassword" placeholder="Password" required />
+  <i class="fa-solid fa-eye toggle-password" data-target="loginPassword"></i>
+</div>
+        <button type="submit">Login</button>
+        <button onclick="closeModal('loginModal')">Close</button>
+      </form>
+      
+    </div>
+  </div>
+
+
+  <div id="registerModal" class="modal">
+    <div class="modal-content">
+      <h2>Register</h2>
+      <form id="registerForm">
+        <input type="text" id="registerUsername" placeholder="Username" required />
+        <input type="email" id="registerEmail" placeholder="Email" required />
+        <div class="password-container">
+  <input type="password" id="registerPassword" placeholder="Password" required />
+  <i class="fa-solid fa-eye toggle-password" data-target="registerPassword"></i>
+</div>
+        <button type="submit">Register</button>
+        <button onclick="closeModal('registerModal')">Close</button>
+      </form>
+      
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
